@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_main.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    tools:context=".MainActivity">
+
+    <!-- Display Section - Increased height with weight -->
+    <LinearLayout
+        android:id="@+id/display_section"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#1E1E1E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25">  <!-- Allocate 25% of screen height to display -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/history_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:maxLines="2"
+            android:text=""
+            android:textColor="#AAAAAA"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/display_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:maxLines="1"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:textSize="46sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+    </LinearLayout>
+
+    <!-- Main Calculator Layout - Changed from NestedScrollView to LinearLayout with constraint connections -->
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="2dp"
+        app:layout_constraintTop_toBottomOf="@id/display_section"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Memory and Mode Controls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_mc"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="MC" />
+
+            <Button
+                android:id="@+id/btn_mr"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="MR" />
+
+            <Button
+                android:id="@+id/btn_m_plus"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="M+" />
+
+            <Button
+                android:id="@+id/btn_m_minus"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="M-" />
+
+            <Button
+                android:id="@+id/btn_clear"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="C" />
+        </LinearLayout>
+
+        <!-- Scientific Functions Row 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_second"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="2nd" />
+
+            <Button
+                android:id="@+id/btn_sin"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="sin" />
+
+            <Button
+                android:id="@+id/btn_cos"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="cos" />
+
+            <Button
+                android:id="@+id/btn_tan"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="tan" />
+
+            <Button
+                android:id="@+id/btn_rad_deg"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="RAD" />
+        </LinearLayout>
+
+        <!-- Scientific Functions Row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_factorial"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="x!" />
+
+            <Button
+                android:id="@+id/btn_ln"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="ln" />
+
+            <Button
+                android:id="@+id/btn_log"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="log" />
+
+            <Button
+                android:id="@+id/btn_sqrt"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="√" />
+
+            <Button
+                android:id="@+id/btn_power"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="^" />
+        </LinearLayout>
+
+        <!-- Constants and Parentheses -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_pi"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="π" />
+
+            <Button
+                android:id="@+id/btn_e"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="e" />
+
+            <Button
+                android:id="@+id/btn_left_paren"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="(" />
+
+            <Button
+                android:id="@+id/btn_right_paren"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text=")" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                style="@style/FunctionButtonStyle"
+                android:layout_margin="2dp"
+                android:text="DEL" />
+        </LinearLayout>
+
+        <!-- Number Pad -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_7"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/btn_8"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/btn_9"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/btn_divide"
+                style="@style/OperationButtonStyle"
+                android:layout_margin="2dp"
+                android:text="/" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_4"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/btn_5"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/btn_6"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/btn_multiply"
+                style="@style/OperationButtonStyle"
+                android:layout_margin="2dp"
+                android:text="*" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_1"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/btn_2"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/btn_3"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/btn_subtract"
+                style="@style/OperationButtonStyle"
+                android:layout_margin="2dp"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_0"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/btn_decimal"
+                style="@style/NumberButtonStyle"
+                android:layout_margin="2dp"
+                android:text="." />
+
+            <Button
+                android:id="@+id/btn_equals"
+                style="@style/EqualsButtonStyle"
+                android:layout_margin="2dp"
+                android:text="=" />
+
+            <Button
+                android:id="@+id/btn_add"
+                style="@style/OperationButtonStyle"
+                android:layout_margin="2dp"
+                android:text="+" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
